@@ -27,10 +27,16 @@ const resolvers = {
       return link;
     },
     update: (parent, args) => {
-      console.log("args are", args);
       const i = links.findIndex(link => link.id === args.id);
       links[i] = args;
       return links[i];
+    },
+    delete: (parent, args) => {
+      links = links.filter(link => {
+         return link.id !== args.id
+      });
+      console.log(links)
+      return links;
     }
   }
 };
